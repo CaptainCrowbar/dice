@@ -1,9 +1,11 @@
 #include "dice.hpp"
+#include "rational.hpp"
 #include "unit-test.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <random>
+#include <stdexcept>
 
 namespace {
 
@@ -31,6 +33,26 @@ namespace {
         double sum2_ = 0;
         int num_ = 0;
     };
+
+}
+
+void test_dice_arithmetic() {
+
+    Dice a, b, c;
+    Rational r(2, 3);
+
+    TRY(a = Dice(2, 6));
+    TRY(b = Dice(3, 10));
+
+    TRY(c = a * 3);  TEST_EQUAL(c.str(), "2d6*3");
+    TRY(c = a / 3);  TEST_EQUAL(c.str(), "2d6/3");
+    TRY(c = a * r);  TEST_EQUAL(c.str(), "2d6*2/3");
+    TRY(c = a / r);  TEST_EQUAL(c.str(), "2d6*3/2");
+    TRY(c = a + b);  TEST_EQUAL(c.str(), "3d10+2d6");
+    TRY(c = a - b);  TEST_EQUAL(c.str(), "-3d10+2d6");
+    TRY(c = b - a);  TEST_EQUAL(c.str(), "3d10-2d6");
+
+    TEST_THROW(c = a / 0, std::invalid_argument);
 
 }
 
