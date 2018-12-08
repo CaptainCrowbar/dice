@@ -20,7 +20,7 @@ void test_rational_construction() {
     TRY((r = {15, -20}));   TEST_EQUAL(r.num(), -3);   TEST_EQUAL(r.den(), 4);  TEST_EQUAL(double(r), -0.75);
     TRY((r = {-15, -20}));  TEST_EQUAL(r.num(), 3);    TEST_EQUAL(r.den(), 4);  TEST_EQUAL(double(r), 0.75);
 
-    TEST_THROW(r = Rational(42, 0), std::domain_error);
+    TEST_THROW(r = Rational(42, 0), std::invalid_argument);
 
 }
 

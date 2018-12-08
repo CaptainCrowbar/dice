@@ -40,7 +40,9 @@ explicit Dice::Dice(integer_type n, integer_type faces = 6, const Rational& fact
 ```
 
 Creates an object that rolls `n` dice, each numbered from 1 to `faces`,
-optionally multiplying the result by `factor`.
+optionally multiplying the result by `factor`. This will produce a null
+(always zero) dice roller if any of the arguments is zero; it will throw
+`std::invalid_argument` if `n` or `faces` is negative.
 
 ```c++
 explicit Dice::Dice(std::string_view str);
@@ -64,11 +66,12 @@ The string can also add or subtract constant integers or fractions. For
 example, `"3d6+10"` means "roll 3d6 and add 10" (the modifier does not have to
 be at the end; `"10+3d6"` is equally valid).
 
-More complicated arithmetic, such as anything that would require parentheses,
-is not supported. This constructor will throw `std::domain_error` if the
-expression requires division by zero.
+White space is not significant. More complicated arithmetic, such as anything
+that would require parentheses, is not supported. This constructor will throw
+`std::invalid_argument` if the expression is not a valid dice specification
+according to the above rules, or if it requires division by zero.
 
-```
+```c++
 Dice::Dice(const Dice& d);
 Dice::Dice(Dice&& d) noexcept;
 Dice::~Dice() noexcept;
@@ -115,8 +118,7 @@ together, in the same way as the plus and minus operators in the string
 format. Multiplication or division by a rational number multiplies or divides
 the result of future rolls by that number.
 
-The division operators will throw `std::domain_error` in the event of division
-by zero.
+The division operators will throw `std::invalid_argument` if the RHS is zero.
 
 ### Statistical functions ###
 

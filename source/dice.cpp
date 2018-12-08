@@ -35,7 +35,7 @@ Dice::Dice(std::string_view str) {
     auto begin = text.cbegin(), end = text.cend();
     while (begin != end) {
         if (! std::regex_search(begin, end, match, pattern, std::regex_constants::match_continuous))
-            throw std::invalid_argument("Invalid dice: " + std::string(str));
+            throw std::invalid_argument("Invalid dice");
         auto sign = *match[0].first == '-' ? -1 : 1;
         auto divisor = parse_integer(match[7], 1);
         if (match[6].matched) {
@@ -158,7 +158,9 @@ void Dice::insert(integer_type n, integer_type faces, const Rational& factor) {
     static const auto sort_terms = [] (const dice_group& g1, const dice_group& g2) noexcept {
         return g1.one_dice.b() == g2.one_dice.b() ? g1.factor < g2.factor : g1.one_dice.b() > g2.one_dice.b();
     };
-    if (n > 0 && faces > 0 && factor) {
+    if (n < 0 || faces < 0)
+        throw std::invalid_argument("Invalid dice");
+    if (n > 0 && faces > 0 && factor != 0) {
         dice_group g;
         g.one_dice = distribution_type(1, faces);
         g.n_dice = n;

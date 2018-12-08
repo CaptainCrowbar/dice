@@ -7,7 +7,7 @@
 Rational::Rational(integer_type num, integer_type den):
 num_(num), den_(den) {
     if (den_ == 0)
-        throw std::domain_error("Division by zero");
+        throw std::invalid_argument("Division by zero");
     normalize();
 }
 
