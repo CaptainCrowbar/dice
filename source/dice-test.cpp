@@ -188,3 +188,17 @@ void test_dice_generation() {
     TEST_NEAR(stats.sd(), dice.sd(), tolerance);
 
 }
+
+void test_dice_literals() {
+
+    Dice dice;
+
+    TRY(dice = 5_d4);    TEST_EQUAL(dice.str(), "5d4");
+    TRY(dice = 5_d6);    TEST_EQUAL(dice.str(), "5d6");
+    TRY(dice = 5_d8);    TEST_EQUAL(dice.str(), "5d8");
+    TRY(dice = 5_d10);   TEST_EQUAL(dice.str(), "5d10");
+    TRY(dice = 5_d12);   TEST_EQUAL(dice.str(), "5d12");
+    TRY(dice = 5_d20);   TEST_EQUAL(dice.str(), "5d20");
+    TRY(dice = 5_d100);  TEST_EQUAL(dice.str(), "5d100");
+
+}

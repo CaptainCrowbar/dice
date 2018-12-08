@@ -65,3 +65,10 @@ inline Dice operator*(const Dice& lhs, const Rational& rhs) { auto d = lhs; d *=
 inline Dice operator*(const Rational& lhs, const Dice& rhs) { auto d = rhs; d *= lhs; return d; }
 inline Dice operator/(const Dice& lhs, const Rational& rhs) { auto d = lhs; d /= rhs; return d; }
 inline std::ostream& operator<<(std::ostream& out, const Dice& d) { return out << d.str(); }
+inline Dice operator""_d4(unsigned long long n) { return Dice(n, 4); }
+inline Dice operator""_d6(unsigned long long n) { return Dice(n, 6); }
+inline Dice operator""_d8(unsigned long long n) { return Dice(n, 8); }
+inline Dice operator""_d10(unsigned long long n) { return Dice(n, 10); }
+inline Dice operator""_d12(unsigned long long n) { return Dice(n, 12); }
+inline Dice operator""_d20(unsigned long long n) { return Dice(n, 20); }
+inline Dice operator""_d100(unsigned long long n) { return Dice(n, 100); }

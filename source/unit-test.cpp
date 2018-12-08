@@ -10,5 +10,6 @@ int main() {
     UNIT_TEST(test_dice_statistics);
     UNIT_TEST(test_dice_parser);
     UNIT_TEST(test_dice_generation);
+    UNIT_TEST(test_dice_literals);
     END_UNIT_TESTS();
 }

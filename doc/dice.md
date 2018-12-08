@@ -144,3 +144,18 @@ as described for the constructor. Because the string is being reconstructed
 from the stored properties of the distribution, the result may not exactly
 match the original string supplied to the constructor, but will be
 functionally equivalent.
+
+### Custom literals ###
+
+```c++
+Dice operator""_d4(unsigned long long n);
+Dice operator""_d6(unsigned long long n);
+Dice operator""_d8(unsigned long long n);
+Dice operator""_d10(unsigned long long n);
+Dice operator""_d12(unsigned long long n);
+Dice operator""_d20(unsigned long long n);
+Dice operator""_d100(unsigned long long n);
+```
+
+Literals for some commonly used dice. For example, `3_d6` is equivalent to
+`Dice(3,6)` or `Dice("3d6")`.
