@@ -126,7 +126,7 @@ Rational Dice::max() const noexcept {
     return sum;
 }
 
-std::string Dice::str() const noexcept {
+std::string Dice::str() const {
     std::string text;
     for (auto& g: groups_) {
         text += g.factor.sign() == -1 ? '-' : '+';

@@ -30,7 +30,7 @@ public:
     real_type sd() const noexcept { return std::sqrt(real_type(variance())); }
     Rational min() const noexcept;
     Rational max() const noexcept;
-    std::string str() const noexcept;
+    std::string str() const;
 private:
     using distribution_type = std::uniform_int_distribution<integer_type>;
     struct dice_group {
