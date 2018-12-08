@@ -135,7 +135,7 @@ These return statistical properties of the dice roll results.
 ### Formatting functions ###
 
 ```c++
-std::string Dice::str() const noexcept;
+std::string Dice::str() const;
 std::ostream& operator<<(std::ostream& out, const Dice& d);
 ```
 
