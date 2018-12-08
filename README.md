@@ -1,4 +1,7 @@
-# C++ dice roller class #
+# C++ Dice Roller Class #
+
+* _[Ross Smith](mailto:rosssmith@me.com) 2018_
+* _Open source under the MIT License_
 
 The `Dice` class is a random number distribution that emulates rolling
 multiple dice of different kinds, and applying some limited arithmetic to the
@@ -21,6 +24,3 @@ fractional results without truncation.
 
 * [Dice Class](doc/dice.md)
 * [Rational Class](doc/rational.md)
-
-* [Dice Class](http://htmlpreview.github.io/?https://github.com/CaptainCrowbar/dice/blob/master/doc/dice.html)
-* [Rational Class](http://htmlpreview.github.io/?https://github.com/CaptainCrowbar/dice/blob/master/doc/rational.html)

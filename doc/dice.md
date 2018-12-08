@@ -30,7 +30,7 @@ Types used in the class. `Rational` is the output type of the generator.
 ### Life cycle functions ###
 
 ```c++
-Dice::Dice();
+Dice::Dice() noexcept;
 ```
 
 Creates a null dice roller, which always yields zero.
