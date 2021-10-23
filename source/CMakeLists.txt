@@ -36,3 +36,5 @@ target_link_libraries(${app}-test
     PRIVATE ${app}-objects
     PRIVATE Threads::Threads
 )
+
+install(TARGETS ${app} DESTINATION bin)
