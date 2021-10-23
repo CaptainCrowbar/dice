@@ -1,4 +1,4 @@
-#include "dice.hpp"
+#include "dice/dice.hpp"
 #include <algorithm>
 #include <cstdlib>
 #include <regex>

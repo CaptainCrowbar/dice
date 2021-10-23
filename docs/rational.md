@@ -1,13 +1,20 @@
-# Rational Number Class #
+# Rational Number Class
 
-* _[Ross Smith](mailto:rosssmith@me.com) 2018_
-* _Open source under the MIT License_
+* _© Ross Smith 2021_
+* _Open source under the Boost License_
 
 `Rational` is a simple rational number class. Integers are represented by a
-signed `int64_t`. All of the constructors and arithmetic operators will reduce
-their result to the lowest possible terms; the denominator is always positive.
-Behaviour is undefined if a numerator or denominator goes outside the
-representable range of an `int64_t`.
+signed `int64_t`. All of the constructors and arithmetic operators will
+reduce their result to the lowest possible terms; the denominator is always
+positive. Behaviour is undefined if a numerator or denominator goes outside
+the representable range of an `int64_t`.
+
+## Contents ##
+
+* TOC
+{:toc}
+
+## Rational class ##
 
 ### Member types ###
 

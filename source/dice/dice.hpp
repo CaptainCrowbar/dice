@@ -1,6 +1,6 @@
 #pragma once
 
-#include "rational.hpp"
+#include "dice/rational.hpp"
 #include <cmath>
 #include <ostream>
 #include <random>

@@ -1,7 +1,7 @@
-# Dice Roller Class #
+# Dice Roller Class
 
-* _[Ross Smith](mailto:rosssmith@me.com) 2018_
-* _Open source under the MIT License_
+* _© Ross Smith 2021_
+* _Open source under the Boost License_
 
 The `Dice` class is a random number distribution that emulates rolling
 multiple dice of different kinds, and applying some limited arithmetic to the
@@ -16,6 +16,13 @@ Examples:
 auto dice1 = Dice(2, 10) * 5 + Dice(3, 6) + 10;
 auto dice2 = Dice("2d10x5 + 3d6 + 10");
 ```
+
+## Contents ##
+
+* TOC
+{:toc}
+
+## Dice class ##
 
 ### Member types ###
 

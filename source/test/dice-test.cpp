@@ -1,5 +1,5 @@
-#include "dice.hpp"
-#include "rational.hpp"
+#include "dice/dice.hpp"
+#include "dice/rational.hpp"
 #include "unit-test.hpp"
 #include <algorithm>
 #include <cmath>

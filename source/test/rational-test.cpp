@@ -1,4 +1,4 @@
-#include "rational.hpp"
+#include "dice/rational.hpp"
 #include "unit-test.hpp"
 #include <stdexcept>
 #include <string>

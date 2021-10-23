@@ -9,4 +9,15 @@ This contains:
 * `Dice` - the C++ class that implements a dice roller
 * `Rational` - a simple rational number class
 
-[Documentation](https://captaincrowbar.github.io/dice/)
+Usage of the `dice` command:
+
+```
+dice [options]
+```
+
+TODO
+
+### Source documentation ###
+
+* [Dice Class](dice.html)
+* [Rational Class](rational.html)

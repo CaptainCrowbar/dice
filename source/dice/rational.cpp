@@ -1,4 +1,4 @@
-#include "rational.hpp"
+#include "dice/rational.hpp"
 #include <cmath>
 #include <cstdlib>
 #include <numeric>
