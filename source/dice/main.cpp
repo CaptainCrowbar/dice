@@ -19,12 +19,12 @@ int main(int argc, char** argv) {
             std::cout <<
                 "dice [<options>] <pattern> [<number>]\n"
                 "    <options> = One or more of:\n"
-                "        -d = Show non-integer results in decimal form instead of fractions\n"
+                "        -d = Show non-integer results as decimal instead of fraction\n"
                 "        -r = Round fractions to the nearest integer\n"
                 "        -f = Round fractions down to an integer (floor)\n"
                 "        -c = Round fractions up to an integer (ceiling)\n"
-                "        -z = Force a non-negative result (results less than 0 are reported as 0)\n"
-                "        -p = Force a positive result (results less than 1 are reported as 1)\n"
+                "        -z = Force a non-negative result (results <0 reported as 0)\n"
+                "        -p = Force a positive result (results <1 reported as 1)\n"
                 "        -h, --help = Print usage information\n"
                 "    <pattern> = Dice to roll\n"
                 "    <number> = Number of times to roll (default 1)\n";
@@ -88,7 +88,7 @@ int main(int argc, char** argv) {
             if (use_decimal)
                 std::cout << double(result) << "\n";
             else
-                std::cout << result << "\n";
+                std::cout << result.mixed() << "\n";
         }
 
         return 0;

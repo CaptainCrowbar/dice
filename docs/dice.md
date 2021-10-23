@@ -27,9 +27,9 @@ auto dice2 = Dice("2d10x5 + 3d6 + 10");
 ### Member types ###
 
 ```c++
-using Dice::integer_type = int64_t;
-using Dice::real_type = double;
-using Dice::result_type = Rational;
+using Dice::integer_type = int64_t
+using Dice::real_type = double
+using Dice::result_type = Rational
 ```
 
 Types used in the class. `Rational` is the output type of the generator.
@@ -37,13 +37,14 @@ Types used in the class. `Rational` is the output type of the generator.
 ### Life cycle functions ###
 
 ```c++
-Dice::Dice() noexcept;
+Dice::Dice() noexcept
 ```
 
 Creates a null dice roller, which always yields zero.
 
 ```c++
-explicit Dice::Dice(integer_type n, integer_type faces = 6, const Rational& factor = 1);
+explicit Dice::Dice(integer_type n, integer_type faces = 6,
+    const Rational& factor = 1)
 ```
 
 Creates an object that rolls `n` dice, each numbered from 1 to `faces`,
@@ -52,7 +53,7 @@ optionally multiplying the result by `factor`. This will produce a null
 `std::invalid_argument` if `n` or `faces` is negative.
 
 ```c++
-explicit Dice::Dice(std::string_view str);
+explicit Dice::Dice(std::string_view str)
 ```
 
 Creates a dice roller by parsing the string representation.
@@ -79,11 +80,11 @@ that would require parentheses, is not supported. This constructor will throw
 according to the above rules, or if it requires division by zero.
 
 ```c++
-Dice::Dice(const Dice& d);
-Dice::Dice(Dice&& d) noexcept;
-Dice::~Dice() noexcept;
-Dice& Dice::operator=(const Dice& d);
-Dice& Dice::operator=(Dice&& d) noexcept;
+Dice::Dice(const Dice& d)
+Dice::Dice(Dice&& d) noexcept
+Dice::~Dice() noexcept
+Dice& Dice::operator=(const Dice& d)
+Dice& Dice::operator=(Dice&& d) noexcept
 ```
 
 Other life cycle functions.
@@ -91,7 +92,7 @@ Other life cycle functions.
 ### Generator function ###
 
 ```c++
-template <typename RNG> Rational Dice::operator()(RNG& rng);
+template <typename RNG> Rational Dice::operator()(RNG& rng)
 ```
 
 The main generator function. The `RNG` class can be any standard conforming
@@ -100,23 +101,23 @@ random number engine.
 ### Arithmetic functions ###
 
 ```c++
-Dice Dice::operator+() const;
-Dice Dice::operator-() const;
-Dice& Dice::operator+=(const Dice& rhs);
-Dice& Dice::operator+=(const Rational& rhs);
-Dice& Dice::operator-=(const Dice& rhs);
-Dice& Dice::operator-=(const Rational& rhs);
-Dice& Dice::operator*=(const Rational& rhs);
-Dice& Dice::operator/=(const Rational& rhs);
-Dice operator+(const Dice& lhs, const Dice& rhs);
-Dice operator+(const Dice& lhs, const Rational& rhs);
-Dice operator+(const Rational& lhs, const Dice& rhs);
-Dice operator-(const Dice& lhs, const Dice& rhs);
-Dice operator-(const Dice& lhs, const Rational& rhs);
-Dice operator-(const Rational& lhs, const Dice& rhs);
-Dice operator*(const Dice& lhs, const Rational& rhs);
-Dice operator*(const Rational& lhs, const Dice& rhs);
-Dice operator/(const Dice& lhs, const Rational& rhs);
+Dice Dice::operator+() const
+Dice Dice::operator-() const
+Dice& Dice::operator+=(const Dice& rhs)
+Dice& Dice::operator+=(const Rational& rhs)
+Dice& Dice::operator-=(const Dice& rhs)
+Dice& Dice::operator-=(const Rational& rhs)
+Dice& Dice::operator*=(const Rational& rhs)
+Dice& Dice::operator/=(const Rational& rhs)
+Dice operator+(const Dice& lhs, const Dice& rhs)
+Dice operator+(const Dice& lhs, const Rational& rhs)
+Dice operator+(const Rational& lhs, const Dice& rhs)
+Dice operator-(const Dice& lhs, const Dice& rhs)
+Dice operator-(const Dice& lhs, const Rational& rhs)
+Dice operator-(const Rational& lhs, const Dice& rhs)
+Dice operator*(const Dice& lhs, const Rational& rhs)
+Dice operator*(const Rational& lhs, const Dice& rhs)
+Dice operator/(const Dice& lhs, const Rational& rhs)
 ```
 
 Operations that modify or combine two sets of dice, or a set of dice and a
@@ -130,11 +131,11 @@ The division operators will throw `std::invalid_argument` if the RHS is zero.
 ### Statistical functions ###
 
 ```c++
-Rational Dice::mean() const noexcept;
-Rational Dice::variance() const noexcept;
-real_type Dice::sd() const noexcept;
-Rational Dice::min() const noexcept;
-Rational Dice::max() const noexcept;
+Rational Dice::mean() const noexcept
+Rational Dice::variance() const noexcept
+real_type Dice::sd() const noexcept
+Rational Dice::min() const noexcept
+Rational Dice::max() const noexcept
 ```
 
 These return statistical properties of the dice roll results.
@@ -142,8 +143,8 @@ These return statistical properties of the dice roll results.
 ### Formatting functions ###
 
 ```c++
-std::string Dice::str() const;
-std::ostream& operator<<(std::ostream& out, const Dice& d);
+std::string Dice::str() const
+std::ostream& operator<<(std::ostream& out, const Dice& d)
 ```
 
 These format the collection of dice stored in the object, in the same format
@@ -155,13 +156,13 @@ functionally equivalent.
 ### Custom literals ###
 
 ```c++
-Dice operator""_d4(unsigned long long n);
-Dice operator""_d6(unsigned long long n);
-Dice operator""_d8(unsigned long long n);
-Dice operator""_d10(unsigned long long n);
-Dice operator""_d12(unsigned long long n);
-Dice operator""_d20(unsigned long long n);
-Dice operator""_d100(unsigned long long n);
+Dice operator""_d4(unsigned long long n)
+Dice operator""_d6(unsigned long long n)
+Dice operator""_d8(unsigned long long n)
+Dice operator""_d10(unsigned long long n)
+Dice operator""_d12(unsigned long long n)
+Dice operator""_d20(unsigned long long n)
+Dice operator""_d100(unsigned long long n)
 ```
 
 Literals for some commonly used dice. For example, `3_d6` is equivalent to

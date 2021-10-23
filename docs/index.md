@@ -14,14 +14,15 @@ Usage of the `dice` command:
 ```
 dice [<options>] <pattern> [<number>]
     <options> = One or more of:
-        -p = Force a positive result (results less than 1 are reported as 1)
-        -z = Force a non-negative result (results less than 0 are reported as 0)
+        -d = Show non-integer results as decimal instead of fraction
         -r = Round fractions to the nearest integer
-        -d = Round fractions down to an integer
-        -u = Round fractions up to an integer
+        -f = Round fractions down to an integer (floor)
+        -c = Round fractions up to an integer (ceiling)
+        -z = Force a non-negative result (results <0 reported as 0)
+        -p = Force a positive result (results <1 reported as 1)
         -h, --help = Print usage information
     <pattern> = Dice to roll
-    <number> = Number of times to roll (default 1)
+    <number> = Number of times to roll (default 1)\
 ```
 
 A dice pattern consists of any number of dice groups or numeric modifiers. A
