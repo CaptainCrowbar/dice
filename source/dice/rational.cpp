@@ -42,6 +42,32 @@ std::string Rational::mixed() const {
     return s;
 }
 
+Rational::integer_type Rational::round() const noexcept {
+    auto i = int_part();
+    auto f2 = 2 * frac_part();
+    if (f2 >= 1)
+        ++i;
+    else if (f2 < -1)
+        --i;
+    return i;
+}
+
+Rational::integer_type Rational::floor() const noexcept {
+    auto i = int_part();
+    auto f = frac_part();
+    if (f < 0)
+        --i;
+    return i;
+}
+
+Rational::integer_type Rational::ceil() const noexcept {
+    auto i = int_part();
+    auto f = frac_part();
+    if (f > 0)
+        ++i;
+    return i;
+}
+
 void Rational::normalize() noexcept {
     if (den_ < 0) {
         num_ = - num_;

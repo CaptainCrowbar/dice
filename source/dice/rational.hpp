@@ -19,10 +19,17 @@ public:
     int sign() const noexcept { return num_ < 0 ? -1 : num_ > 0 ? 1 : 0; }
     std::string str() const;
     std::string mixed() const;
+    integer_type round() const noexcept;
+    integer_type floor() const noexcept;
+    integer_type ceil() const noexcept;
     explicit operator bool() const noexcept { return num_ != 0; }
     explicit operator real_type() const noexcept { return real_type(num_) / real_type(den_); }
     Rational operator+() const noexcept { return *this; }
     Rational operator-() const noexcept;
+    Rational& operator++() noexcept { return *this += 1; }
+    Rational operator++(int) noexcept { auto r = *this; ++*this; return r; }
+    Rational& operator--() noexcept { return *this -= 1; }
+    Rational operator--(int) noexcept { auto r = *this; --*this; return r; }
     Rational& operator+=(const Rational& rhs) noexcept;
     Rational& operator-=(const Rational& rhs) noexcept { return *this += - rhs; }
     Rational& operator*=(const Rational& rhs) noexcept;

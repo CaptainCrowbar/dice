@@ -102,6 +102,15 @@ int Rational::sign() const noexcept;
 Returns the sign of a rational number (-1 if negative, 0 if zero, +1 if
 positive).
 
+```c++
+Rational::integer_type Rational::round() const noexcept;
+Rational::integer_type Rational::floor() const noexcept;
+Rational::integer_type Rational::ceil() const noexcept;
+```
+
+Return the nearest integer (halves are rounded toward positive infinity), the
+floor (round down to an integer), or the ceiling (round up to an integer).
+
 ### Formatting functions ###
 
 ```c++
@@ -123,6 +132,10 @@ Formats a rational number in mixed form (e.g. `"3 1/7"`).
 ```c++
 Rational Rational::operator+() const noexcept;
 Rational Rational::operator-() const noexcept;
+Rational& Rational::operator++() noexcept;
+Rational Rational::operator++(int) noexcept;
+Rational& Rational::operator--() noexcept;
+Rational Rational::operator--(int) noexcept;
 Rational& Rational::operator+=(const Rational& rhs) noexcept;
 Rational& Rational::operator-=(const Rational& rhs) noexcept;
 Rational& Rational::operator*=(const Rational& rhs) noexcept;

@@ -1,7 +1,6 @@
 #include "dice/rational.hpp"
 #include "unit-test.hpp"
 #include <stdexcept>
-#include <string>
 
 void test_rational_construction() {
 
@@ -109,5 +108,30 @@ void test_rational_arithmetic() {
     TRY(z = y / x);        TEST_EQUAL(z.num(), 10);   TEST_EQUAL(z.den(), 3);   TEST_EQUAL(z.str(), "10/3");
     TRY(z = x.abs());      TEST_EQUAL(z.num(), 5);    TEST_EQUAL(z.den(), 4);   TEST_EQUAL(z.str(), "5/4");
     TRY(z = (- x).abs());  TEST_EQUAL(z.num(), 5);    TEST_EQUAL(z.den(), 4);   TEST_EQUAL(z.str(), "5/4");
+
+}
+
+void test_rational_conversion() {
+
+    Rational r;
+
+    /**/                 TEST_EQUAL(r.round(), 0);   TEST_EQUAL(r.floor(), 0);   TEST_EQUAL(r.ceil(), 0);
+    TRY((r = {-8, 4}));  TEST_EQUAL(r.round(), -2);  TEST_EQUAL(r.floor(), -2);  TEST_EQUAL(r.ceil(), -2);
+    TRY((r = {-7, 4}));  TEST_EQUAL(r.round(), -2);  TEST_EQUAL(r.floor(), -2);  TEST_EQUAL(r.ceil(), -1);
+    TRY((r = {-6, 4}));  TEST_EQUAL(r.round(), -1);  TEST_EQUAL(r.floor(), -2);  TEST_EQUAL(r.ceil(), -1);
+    TRY((r = {-5, 4}));  TEST_EQUAL(r.round(), -1);  TEST_EQUAL(r.floor(), -2);  TEST_EQUAL(r.ceil(), -1);
+    TRY((r = {-4, 4}));  TEST_EQUAL(r.round(), -1);  TEST_EQUAL(r.floor(), -1);  TEST_EQUAL(r.ceil(), -1);
+    TRY((r = {-3, 4}));  TEST_EQUAL(r.round(), -1);  TEST_EQUAL(r.floor(), -1);  TEST_EQUAL(r.ceil(), 0);
+    TRY((r = {-2, 4}));  TEST_EQUAL(r.round(), 0);   TEST_EQUAL(r.floor(), -1);  TEST_EQUAL(r.ceil(), 0);
+    TRY((r = {-1, 4}));  TEST_EQUAL(r.round(), 0);   TEST_EQUAL(r.floor(), -1);  TEST_EQUAL(r.ceil(), 0);
+    TRY((r = {0, 4}));   TEST_EQUAL(r.round(), 0);   TEST_EQUAL(r.floor(), 0);   TEST_EQUAL(r.ceil(), 0);
+    TRY((r = {1, 4}));   TEST_EQUAL(r.round(), 0);   TEST_EQUAL(r.floor(), 0);   TEST_EQUAL(r.ceil(), 1);
+    TRY((r = {2, 4}));   TEST_EQUAL(r.round(), 1);   TEST_EQUAL(r.floor(), 0);   TEST_EQUAL(r.ceil(), 1);
+    TRY((r = {3, 4}));   TEST_EQUAL(r.round(), 1);   TEST_EQUAL(r.floor(), 0);   TEST_EQUAL(r.ceil(), 1);
+    TRY((r = {4, 4}));   TEST_EQUAL(r.round(), 1);   TEST_EQUAL(r.floor(), 1);   TEST_EQUAL(r.ceil(), 1);
+    TRY((r = {5, 4}));   TEST_EQUAL(r.round(), 1);   TEST_EQUAL(r.floor(), 1);   TEST_EQUAL(r.ceil(), 2);
+    TRY((r = {6, 4}));   TEST_EQUAL(r.round(), 2);   TEST_EQUAL(r.floor(), 1);   TEST_EQUAL(r.ceil(), 2);
+    TRY((r = {7, 4}));   TEST_EQUAL(r.round(), 2);   TEST_EQUAL(r.floor(), 1);   TEST_EQUAL(r.ceil(), 2);
+    TRY((r = {8, 4}));   TEST_EQUAL(r.round(), 2);   TEST_EQUAL(r.floor(), 2);   TEST_EQUAL(r.ceil(), 2);
 
 }

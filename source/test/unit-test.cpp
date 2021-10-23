@@ -9,6 +9,7 @@ int main(int argc, char** argv) {
     UNIT_TEST(rational_partition)
     UNIT_TEST(rational_formatting)
     UNIT_TEST(rational_arithmetic)
+    UNIT_TEST(rational_conversion)
 
     // dice-test.cpp
     UNIT_TEST(dice_arithmetic)
