@@ -22,7 +22,7 @@ dice [<options>] <pattern> [<number>]
         -p = Force a positive result (results <1 reported as 1)
         -h, --help = Print usage information
     <pattern> = Dice to roll
-    <number> = Number of times to roll (default 1)\
+    <number> = Number of times to roll (default 1)
 ```
 
 A dice pattern consists of any number of dice groups or numeric modifiers. A
