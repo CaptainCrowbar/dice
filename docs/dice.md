@@ -66,7 +66,7 @@ the results" (and could also be written `"3D"`).
 A group can be preceded or followed by an integer multiplier, delimited by
 either a star or the letter `X` (case insensitive), and followed by a divisor,
 delimited by a slash. For example, `"3d6x2/3"` means "roll 3d6 and multiply
-the result by 2/3". The returned value always keeps fraction intact, it does
+the result by 2/3". The returned value always keeps fractions intact, it does
 not round to an integer.
 
 The string can also add or subtract constant integers or fractions. For
