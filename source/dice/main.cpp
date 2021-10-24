@@ -19,6 +19,7 @@ int main(int argc, char** argv) {
             std::cout <<
                 "dice [<options>] <pattern> [<number>]\n"
                 "    <options> = One or more of:\n"
+                "        -g = Show grand total\n"
                 "        -d = Show non-integer results as decimal instead of fraction\n"
                 "        -r = Round fractions to the nearest integer\n"
                 "        -f = Round fractions down to an integer (floor)\n"
@@ -31,6 +32,7 @@ int main(int argc, char** argv) {
             return 0;
         }
 
+        bool use_grand = false;
         bool use_decimal = false;
         bool use_round = false;
         bool use_floor = false;
@@ -41,6 +43,7 @@ int main(int argc, char** argv) {
         while (! args.empty() && args[0][0] == '-') {
             for (char c: args[0].substr(1)) {
                 switch (c) {
+                    case 'g':  use_grand = true; break;
                     case 'd':  use_decimal = true; break;
                     case 'r':  use_round = true; break;
                     case 'f':  use_floor = true; break;
@@ -70,6 +73,7 @@ int main(int argc, char** argv) {
             number = std::strtol(args[1].data(), nullptr, 10);
         auto seed = std::random_device()();
         std::mt19937 rng(seed);
+        Rational total;
 
         for (long i = 1; i <= number; ++i) {
             auto result = dice(rng);
@@ -85,10 +89,21 @@ int main(int argc, char** argv) {
                 result = 1;
             if (number > 1)
                 std::cout << i << ": ";
+            total += result;
             if (use_decimal)
-                std::cout << double(result) << "\n";
+                std::cout << double(result);
             else
-                std::cout << result.mixed() << "\n";
+                std::cout << result.mixed();
+            std::cout << "\n";
+        }
+
+        if (use_grand && number > 1) {
+            std::cout << "Total: ";
+            if (use_decimal)
+                std::cout << double(total);
+            else
+                std::cout << total.mixed();
+            std::cout << "\n";
         }
 
         return 0;

@@ -14,6 +14,7 @@ Usage of the `dice` command:
 ```
 dice [<options>] <pattern> [<number>]
     <options> = One or more of:
+        -g = Show grand total
         -d = Show non-integer results as decimal instead of fraction
         -r = Round fractions to the nearest integer
         -f = Round fractions down to an integer (floor)
